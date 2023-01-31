@@ -2,6 +2,7 @@ use leptos::*;
 
 use crate::attr::Attr;
 
+/// Holds `RwSignal` for attribute type, set closure, and title of attribute
 pub struct Value<T>
 where
     T: 'static + Attr,
@@ -14,7 +15,7 @@ where
 // Render only signal for owned or borrowed value
 impl<T> IntoView for &Value<T>
 where
-    T: Clone + Attr,
+    T: Attr + Clone,
 {
     fn into_view(self, cx: Scope) -> View {
         self.signal.into_view(cx)

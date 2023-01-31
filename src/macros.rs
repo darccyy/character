@@ -1,3 +1,8 @@
+/// Create attributes from types
+///
+/// Takes as arguments `leptos::Scope` and types that implement `Attr`
+///
+/// Returns a closure to set all attributes, and tuple of corresponding `Value`s
 #[macro_export]
 macro_rules! create_attributes {
     ( $cx: expr, $( $x: ty ),* ) => {{
@@ -22,6 +27,9 @@ macro_rules! create_attributes {
     }};
 }
 
+/// Derives `std::fmt::Display` for unit structs
+///
+/// Automatically implements `ToString` and `leptos::IntoView` (using `derive_into_view!`)
 #[macro_export]
 macro_rules! derive_display {
     ($t: ty) => {
@@ -35,6 +43,9 @@ macro_rules! derive_display {
     };
 }
 
+/// Derives `leptos::IntoView` for types that implement `Display`
+///
+/// Mirrors `Display` implementation
 #[macro_export]
 macro_rules! derive_into_view {
     ($t: ty) => {
