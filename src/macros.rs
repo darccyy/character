@@ -3,22 +3,22 @@ macro_rules! create_attributes {
     ( $cx: expr, $( $x: ty ),* ) => {{
         let list = (
             $( {
-                let signal = create_rw_signal($cx, <$x>::random());
+                let signal = create_rw_signal($cx, <$x>::set());
                 Value {
                     signal,
-                    random: box move |_| signal.set(<$x>::random()),
+                    set: box move |_| signal.set(<$x>::set()),
                     title: <$x>::TITLE,
                 }
             }, )*
         );
 
-        let random_all = move |_: leptos::web_sys::MouseEvent| {
+        let set_all = move |_: leptos::web_sys::MouseEvent| {
             $( ${ignore(x)}
-                list.${index()}.signal.set(<$x>::random());
+                list.${index()}.signal.set(<$x>::set());
             )*
         };
 
-        (random_all, list)
+        (set_all, list)
     }};
 }
 

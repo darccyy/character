@@ -10,7 +10,7 @@ derive_display!(Age);
 impl Attr for Age {
     const TITLE: &'static str = "Age";
 
-    fn random() -> Self {
+    fn set() -> Self {
         Self(rand::thread_rng().gen_range(18..40))
     }
 }

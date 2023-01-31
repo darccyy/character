@@ -11,17 +11,32 @@ use crate::{attr::Attr, types::*, value::Value};
 
 #[component]
 pub fn App(cx: Scope) -> impl IntoView {
-    let (random_all, (age, first, last)): _ = create_attributes!(cx, Age, First, Last);
+    let (set_all, (age, first, last, sex)): _ = create_attributes!(cx, Age, First, Last, Sex);
 
     view! { cx,
-        <button on:click= random_all > "Random All" </button>
+        <button on:click= set_all > "Random All" </button>
 
         <p>
-            {&first} " " {&last} ", " {&age}
+            {&first} " " {&last} ", " {&age} " " {&sex}
         </p>
 
-        { first }
-        { last }
-        { age }
+        { view(cx, first) }
+        { view(cx, last) }
+        { view(cx, age) }
+        { view(cx, sex) }
+    }
+}
+
+// Render element with button to reset
+fn view<T>(cx: Scope, value: Value<T>) -> impl IntoView
+where
+    T: Clone + Attr,
+{
+    view! { cx,
+        <p>
+            <button on:click= value.set > "Random" </button>
+            " " { value.title }
+            " - " { value.signal }
+        </p>
     }
 }

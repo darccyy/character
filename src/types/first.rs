@@ -10,7 +10,7 @@ derive_display!(First);
 impl Attr for First {
     const TITLE: &'static str = "First Name";
 
-    fn random() -> Self {
+    fn set() -> Self {
         const NAMES: &[&str] = &["John", "Michael", "Steven", "Sophia", "Adam"];
 
         Self(NAMES.choose(&mut rand::thread_rng()).unwrap().to_string())
