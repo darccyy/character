@@ -463,9 +463,18 @@ imports.wbg.__wbg_cloneNode_b03caed5a5610386 = function() { return handleError(f
     const ret = getObject(arg0).cloneNode();
     return addHeapObject(ret);
 }, arguments) };
+imports.wbg.__wbg_setinnerHTML_32081d8a164e6dc4 = function(arg0, arg1, arg2) {
+    var v0 = getCachedStringFromWasm0(arg1, arg2);
+    getObject(arg0).innerHTML = v0;
+};
 imports.wbg.__wbg_removeAttribute_beaed7727852af78 = function() { return handleError(function (arg0, arg1, arg2) {
     var v0 = getCachedStringFromWasm0(arg1, arg2);
     getObject(arg0).removeAttribute(v0);
+}, arguments) };
+imports.wbg.__wbg_setAttribute_d8436c14a59ab1af = function() { return handleError(function (arg0, arg1, arg2, arg3, arg4) {
+    var v0 = getCachedStringFromWasm0(arg1, arg2);
+    var v1 = getCachedStringFromWasm0(arg3, arg4);
+    getObject(arg0).setAttribute(v0, v1);
 }, arguments) };
 imports.wbg.__wbg_before_0e00e39de571c250 = function() { return handleError(function (arg0, arg1) {
     getObject(arg0).before(getObject(arg1));
@@ -588,12 +597,12 @@ imports.wbg.__wbindgen_memory = function() {
     const ret = wasm.memory;
     return addHeapObject(ret);
 };
-imports.wbg.__wbindgen_closure_wrapper310 = function(arg0, arg1, arg2) {
-    const ret = makeMutClosure(arg0, arg1, 97, __wbg_adapter_28);
+imports.wbg.__wbindgen_closure_wrapper362 = function(arg0, arg1, arg2) {
+    const ret = makeMutClosure(arg0, arg1, 133, __wbg_adapter_28);
     return addHeapObject(ret);
 };
-imports.wbg.__wbindgen_closure_wrapper405 = function(arg0, arg1, arg2) {
-    const ret = makeMutClosure(arg0, arg1, 152, __wbg_adapter_31);
+imports.wbg.__wbindgen_closure_wrapper440 = function(arg0, arg1, arg2) {
+    const ret = makeMutClosure(arg0, arg1, 166, __wbg_adapter_31);
     return addHeapObject(ret);
 };
 
@@ -630,7 +639,7 @@ function initSync(module) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('chargen-538c606e259d40a6_bg.wasm', import.meta.url);
+        input = new URL('chargen-f39d3037d7535a5f_bg.wasm', import.meta.url);
     }
     const imports = getImports();
 
