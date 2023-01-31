@@ -12,14 +12,20 @@ use crate::{attr::Attr, types::*, value::Value};
 #[component]
 pub fn App(cx: Scope) -> impl IntoView {
     // Create attributes and `set_all` closure
-    let (set_all, (age, first, last, sex)): _ = create_attributes!(cx, Age, First, Last, Sex);
+    let (set_all, (age, first, last, sex, address)): _ =
+        create_attributes!(cx, Age, First, Last, Sex, HomeAddress);
 
     view! { cx,
+        <h1> "Character Generator" </h1>
+
+        // Set every attribute random value
         <button on:click= set_all > "Random All" </button>
 
         // Summary
-        <p>
+        <p class="summary">
             {&first} " " {&last} ", " {&age} " " {&sex}
+            <br />
+            "Lives at " {&address}
         </p>
 
         // Each attribute, with set button
@@ -27,6 +33,7 @@ pub fn App(cx: Scope) -> impl IntoView {
         { view(cx, last) }
         { view(cx, age) }
         { view(cx, sex) }
+        { view(cx, address) }
     }
 }
 

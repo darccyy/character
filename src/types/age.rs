@@ -2,7 +2,7 @@ use rand::Rng;
 
 use crate::{Attr, derive_display};
 
-#[derive(Clone, Debug)]
+#[derive(Clone)]
 pub struct Age(u32);
 
 derive_display!(Age);

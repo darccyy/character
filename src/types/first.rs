@@ -2,7 +2,7 @@ use rand::seq::SliceRandom;
 
 use crate::{derive_display, Attr};
 
-#[derive(Clone, Debug)]
+#[derive(Clone)]
 pub struct First(String);
 
 derive_display!(First);
